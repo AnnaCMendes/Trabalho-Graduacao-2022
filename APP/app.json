@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "src",
+    "slug": "src",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "../APP/src/assets/icon.png",
+    "splash": {
+      "image": "../APP/src/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "../APP/src/assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "../APP/src/assets/favicon.png"
+    }
+  }
+}
