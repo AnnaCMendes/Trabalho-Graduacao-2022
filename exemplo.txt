@@ -1,0 +1,22 @@
+Objetivo:
+
+Realizar um sistema de prospecção de clientes.
+
+Modelo: Clientes - ok
+
+Clientes: id, nome, pessoa, Origem do Negócio, Tipo de Orçamento, Segmento do Cliente, Responsável Pelo Negócio,
+Participação de Prceiro, Telefone, Indique o local da Prospecção, Tipo de Conecção - Tensão, 
+Estado, Informar o Município, data do cadastro, data da próxima visita, horário da nova visita. 
+
+Repository de Clientes: ok
+
+    obterTodos, obterPorID, adicionar, atualizar, deletar
+
+Serviço de clientes: ok
+     obterTodos, obterPorID, adicionar, atualizar, deletar
+
+Controller de clientes: ok
+    obterTodos, obterPorID, adicionar, atualizar, deletar
+
+
+

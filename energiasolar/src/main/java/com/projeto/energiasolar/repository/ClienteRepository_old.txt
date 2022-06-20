@@ -1,0 +1,89 @@
+package com.projeto.energiasolar.repository;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Repository;
+
+import com.projeto.energiasolar.model.Cliente;
+import com.projeto.energiasolar.model.exception.ResourceNotFoundException;
+
+@Repository
+public class ClienteRepository {
+
+    private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+    private Integer ultimoId = 0;
+
+    /**
+     * Metodo para Retornar uma lista de clientes.
+     * 
+     * @return Lista de Clientes.
+     */
+    public List<Cliente> obterTodos() {
+
+        return clientes;
+    }
+
+    /**
+     * Metodo que retorna o cliente encontrado pelo seu ID
+     * 
+     * @param id do cliente que será localizado
+     * @return retorna um cliente, caso tenha encontrado.
+     */
+    public Optional<Cliente> obterPorId(Long id) {
+        return clientes
+                .stream()
+                .filter(clientes -> clientes.getId() == id)
+                .findFirst();
+    }
+
+    /**
+     * Metodo para adicionar clientes na lista.
+     * 
+     * @param clientes que será adicionado.
+     * @return o produto que foi adicionado na lista.
+     */
+
+    public Cliente adicionar(Cliente clientes) {
+
+        ultimoId++;
+        clientes.setId(ultimoId);
+        clientes.add(clientes);
+        return clientes;
+
+    }
+
+    /**
+     * Metodo para deletar o cliente por ID.
+     * 
+     * @param id do cliente para ser deletado.
+     */
+    public void deletar(Long id) {
+        clientes.removeIf(clientes -> clientes.getId() == id);
+    }
+
+    /**
+     * Metodo para atualizar o cliente na lista
+     * 
+     * @param clientes que será atualizado.
+     * @return Retorna o cliente que será atualizado na lista.
+     */
+    public Cliente atualizar(Cliente clientes) {
+
+        // Encontrar o cliente na lista
+        Optional<Cliente> clienteEncontrado = obterPorId(clientes.getId());
+
+        if (clienteEncontrado.isempty()) {
+            throw new ResourceNotFoundException("Cliente não encontrado");
+        }
+
+        // Remover o cliente antigo da lista.
+        deletar(clientes.getId());
+
+        // Adicionar o novo cliente atualizado na lista.
+        clientes.add(clientes);
+        return clientes;
+    }
+
+}
